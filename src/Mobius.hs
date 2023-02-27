@@ -59,14 +59,6 @@ convolveBy op f g = \n -> sum $ fmap (\x -> uncurry op x) (fgDivs n)
   where
     fgDivs n = map (bimap f g) (divisorPairs n)
 
--- convolution :: (Int -> Int) -> (Int -> Int) -> (Int -> Int)
--- convolution f g = \n -> sum $ fmap (\x -> uncurry (+) x) (fgDivs n)
---   where
---     fgDivs n = map (bimap f g) (divisorPairs n)
 convolution = convolveBy (+)
 
--- dirichletConvolution :: (Int -> Int) -> (Int -> Int) -> (Int -> Int)
--- dirichletConvolution f g = \n -> sum $ fmap (\x -> uncurry (*) x) (fgDivs n)
---   where
---     fgDivs n = map (bimap f g) (divisorPairs n)
 dirichletConvolution = convolveBy (*)
